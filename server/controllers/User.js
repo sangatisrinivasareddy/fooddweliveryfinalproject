@@ -198,6 +198,7 @@ export const removeFromFavorites = async (req, res, next) => {
 };
 
 export const addToFavorites = async (req, res, next) => {
+  console.log("favourite")
   try {
     const { productId } = req.body;
     const userJWT = req.user;
@@ -217,7 +218,9 @@ export const addToFavorites = async (req, res, next) => {
 };
 
 export const getUserFavorites = async (req, res, next) => {
+  console.log("entered")
   try {
+    
     const userId = req.user.id;
     const user = await User.findById(userId).populate("favourites").exec();
     if (!user) {
@@ -226,6 +229,7 @@ export const getUserFavorites = async (req, res, next) => {
     const favoriteProducts = user.favourites;
     return res.status(200).json(favoriteProducts);
   } catch (err) {
+    console.log(err)
     next(err);
   }
 };

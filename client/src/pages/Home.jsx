@@ -74,7 +74,7 @@ const Home = () => {
         <Title>Food Categories</Title>
         <CardWrapper>
           {category.map((category) => (
-            <ProductCategoryCard category={category} />
+            <ProductCategoryCard key={category.id} category={category} />
           ))}
         </CardWrapper>
       </Section>
